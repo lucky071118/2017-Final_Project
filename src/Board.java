@@ -81,7 +81,7 @@ public class Board extends JPanel implements ActionListener{
             
             enemies.add(new EnemyA(position[0], position[1]));
         }
-        
+        enemies.add(new EnemyB(0, 300));
     }
     
     
