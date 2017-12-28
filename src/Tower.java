@@ -1,9 +1,8 @@
-import java.awt.Image;
+
 import java.util.ArrayList;
 
 public class Tower extends GameObject{
-	private int dx;
-    private int dy;
+	
     private ArrayList<Missile> missiles;
     
     public Tower(int x, int y){
@@ -13,13 +12,13 @@ public class Tower extends GameObject{
     
     private void initTower(){
         missiles = new ArrayList<Missile>();
-        loadImage("com\\moving_sprite\\craft.png");
+        loadImage("bin\\TowerA.png");
         getImageDimensions();
     }
     
     
     
-    public ArrayList getMissiles() {
+    public ArrayList<Missile> getMissiles() {
         return missiles;
     }
     

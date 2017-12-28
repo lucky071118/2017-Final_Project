@@ -13,17 +13,17 @@ import javax.swing.JPanel;
 
 public class Board extends JPanel implements ActionListener{
     private final int DELAY = 15;
-    private final int B_WIDTH = 400;
-    private final int B_HEIGHT = 300;
+    private final int B_WIDTH = 1200;
+    private final int B_HEIGHT = 900;
     private Timer timer;
     private ArrayList<Tower> towers;
     private ArrayList<Enemy> enemies;
     private boolean ingame;
     
     private final int[][] enemyPositions = {
-        {0, 29}, {-5, 59}, {-6, 89},
-        {-78, 109}, {-6, 139}, {-6, 239},
-        {-79, 259}, {-21, 50}, {-20, 150},
+        {0, 29}, {0, 59}, {0, 89},
+        {-78, 109}, {-6, 139}, {0, 239},
+        {-79, 259}, {-21, 50}, {0, 150},
         {-98, 209}, {-560, 45}, {-510, 70},
         {-93, 159}, {-590, 80}, {-530, 60},
         {-940, 59}, {-990, 30}, {-920, 200},
@@ -33,7 +33,7 @@ public class Board extends JPanel implements ActionListener{
     };
     
     private final int[][] towerPositions = {
-            {300, 29}, {250, 59}
+            {1000, 29}, {900, 59}
         };
     
     
@@ -138,6 +138,10 @@ public class Board extends JPanel implements ActionListener{
     public void actionPerformed(ActionEvent e){
         inGame();
 //        updateCraft();
+        for(Tower tower : towers){
+        	tower.fire();
+        }
+        
         updateMissiles();
         updateEnemies();
         

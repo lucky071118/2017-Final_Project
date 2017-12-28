@@ -1,7 +1,7 @@
 
 public class Missile extends GameObject{
 	
-	private final int BOARD_WIDTH = 390;
+//	private final int BOARD_WIDTH = 390;
     private final int MISSILE_SPEED = 2;
     
     public Missile(int x, int y){
@@ -11,7 +11,7 @@ public class Missile extends GameObject{
     }
     
     private void initMissile(){
-        loadImage("com\\moving_sprite\\missile.png");  
+        loadImage("bin\\missile.png");  
         getImageDimensions();
     }
     
@@ -19,7 +19,7 @@ public class Missile extends GameObject{
         
         x -= MISSILE_SPEED;
         
-        if (x > BOARD_WIDTH) {
+        if (x < 0) {
             isVisible = false;
         }
     }
