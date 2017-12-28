@@ -1,7 +1,7 @@
 
 import java.util.ArrayList;
 
-public class Tower extends GameObject{
+public abstract class Tower extends GameObject{
 	
     private ArrayList<Missile> missiles;
     
@@ -12,10 +12,11 @@ public class Tower extends GameObject{
     
     private void initTower(){
         missiles = new ArrayList<Missile>();
-        loadImage("bin\\TowerA.png");
+        loadImage(getImageFile());
         getImageDimensions();
     }
     
+    protected abstract String getImageFile();
     
     
     public ArrayList<Missile> getMissiles() {

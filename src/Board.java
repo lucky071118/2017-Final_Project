@@ -19,7 +19,7 @@ public class Board extends JPanel implements ActionListener{
     private ArrayList<Tower> towers;
     private ArrayList<Enemy> enemies;
     private boolean ingame;
-    
+    private TowerTimer towerTimer;
     private final int[][] enemyPositions = {
         {0, 29}, {0, 59}, {0, 89},
         {-78, 109}, {-6, 139}, {0, 239},
@@ -57,13 +57,18 @@ public class Board extends JPanel implements ActionListener{
         
         timer = new Timer(DELAY, this);
         timer.start();
+        
+        towerTimer = TowerATimer.getActionListener();
+        towerTimer.setTowers( towers);
+        towerTimer.startTime();
+        
     }
     
     private void initTowers(){
     	towers = new ArrayList<Tower> ();
         
     	for(int[] position : towerPositions) {
-    		towers.add(new Tower(position[0], position[1]));
+    		towers.add(new TowerA(position[0], position[1]));
     	}
     }
     
@@ -138,9 +143,7 @@ public class Board extends JPanel implements ActionListener{
     public void actionPerformed(ActionEvent e){
         inGame();
 //        updateCraft();
-        for(Tower tower : towers){
-        	tower.fire();
-        }
+        
         
         updateMissiles();
         updateEnemies();

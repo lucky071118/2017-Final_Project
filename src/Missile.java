@@ -11,7 +11,7 @@ public class Missile extends GameObject{
     }
     
     private void initMissile(){
-        loadImage("bin\\missile.png");  
+        loadImage("bin\\MissileA.png");  
         getImageDimensions();
     }
     
