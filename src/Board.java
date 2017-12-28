@@ -58,7 +58,7 @@ public class Board extends JPanel implements ActionListener{
         timer = new Timer(DELAY, this);
         timer.start();
         
-        towerTimer = TowerATimer.getActionListener();
+        towerTimer = TowerTimer.getActionListener();
         towerTimer.setTowers( towers);
         towerTimer.startTime();
         
@@ -67,9 +67,11 @@ public class Board extends JPanel implements ActionListener{
     private void initTowers(){
     	towers = new ArrayList<Tower> ();
         
-    	for(int[] position : towerPositions) {
-    		towers.add(new TowerA(position[0], position[1]));
-    	}
+    	towers.add(new TowerA(towerPositions[0][0],towerPositions[0][1]));
+    	towers.add(new TowerB(towerPositions[1][0],towerPositions[1][1]));
+//    	for(int[] position : towerPositions) {
+//    		towers.add(new TowerA(position[0], position[1]));
+//    	}
     }
     
     private void initEnemies(){

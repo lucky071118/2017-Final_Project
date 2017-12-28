@@ -4,9 +4,15 @@ import java.util.ArrayList;
 public abstract class Tower extends GameObject{
 	
     private ArrayList<Missile> missiles;
+    private int reloadTime;
+    private int firePower;
+    private boolean canFire;
+    private int reloadCounter;
     
-    public Tower(int x, int y){
+    public Tower(int x, int y, int reloadTime,int firePower){
         super(x, y);
+        this.reloadTime = reloadTime;
+        this.firePower = firePower;
         initTower();
     }
     
@@ -27,6 +33,18 @@ public abstract class Tower extends GameObject{
   
     
     public void fire() {
-        missiles.add(new Missile(x + width, y + height / 2));
+    	
+    	if(canFire) {
+    		missiles.add(new Missile(x + width, y + height / 2));
+    		
+    		reloadCounter = 1;
+    		canFire = false;
+    	}else {
+    		reloadCounter++;
+    	}
+    	
+        if(reloadCounter == reloadTime ) {
+        	canFire = true;
+        }
     }
 }
