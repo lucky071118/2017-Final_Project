@@ -1,10 +1,36 @@
+import java.awt.EventQueue;
 
-public class Main {
+import javax.swing.JFrame;
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println("test for git push");
-		System.out.println("test for git push2");
-	}
+public class Main extends JFrame{
+	
+	public Main() { 
+        initUI();
+    }
+    
+    private void initUI() {
+        
+        add(new Board());
+        
+        setSize(400, 300);
+        setResizable(false);
+        
+        setTitle("Tower Defense Game");
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    public static void main(String[] args) {
+        
+        EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                
+            	Main ex = new Main();
+                ex.setVisible(true);
+            }
+        });
+    }
+	
 
 }
