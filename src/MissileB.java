@@ -5,4 +5,10 @@ public class MissileB extends Missile{
 		super(x, y, 4, 10);
 	}
 	
+	protected String getImageName() {
+		return "bin\\MissileA.png";
+		
+	}
+	
+	
 }

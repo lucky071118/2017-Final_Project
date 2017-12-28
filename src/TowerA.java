@@ -6,10 +6,10 @@ public class TowerA extends Tower{
 	
 	
 	public TowerA(int x, int y) {
-		super(x, y, 1, 30);
+		super(x, y, 1);
 	}
 	
-	protected String getImageFile() {
+	protected String getImageName() {
 		return "bin\\TowerA.png";
 	}
 	

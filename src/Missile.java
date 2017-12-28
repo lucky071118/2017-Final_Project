@@ -1,5 +1,5 @@
 
-public class Missile extends GameObject{
+public abstract class Missile extends GameObject{
 	
 //	private final int BOARD_WIDTH = 390;
     private int speed;
@@ -13,9 +13,11 @@ public class Missile extends GameObject{
     }
     
     private void initMissile(){
-        loadImage("bin\\MissileA.png");  
+        loadImage(getImageName());  
         getImageDimensions();
     }
+    
+    
     
     public void move() {
         
@@ -24,5 +26,9 @@ public class Missile extends GameObject{
         if (x < 0) {
             isVisible = false;
         }
+    }
+    
+    public int getMissilePower() {
+    	return power;
     }
 }

@@ -58,4 +58,6 @@ public abstract class GameObject {
     public Rectangle getBounds(){
         return new Rectangle(x, y, width, height);
     }
+    
+    protected abstract String getImageName();
 }

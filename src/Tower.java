@@ -5,24 +5,22 @@ public abstract class Tower extends GameObject{
 	
     protected ArrayList<Missile> missiles;
     private int reloadTime;
-    private int firePower;
     private boolean canFire;
     private int reloadCounter;
     
-    public Tower(int x, int y, int reloadTime,int firePower){
+    public Tower(int x, int y, int reloadTime){
         super(x, y);
         this.reloadTime = reloadTime;
-        this.firePower = firePower;
         initTower();
     }
     
     private void initTower(){
         missiles = new ArrayList<Missile>();
-        loadImage(getImageFile());
+        loadImage(getImageName());
         getImageDimensions();
     }
     
-    protected abstract String getImageFile();
+    
     
     
     public ArrayList<Missile> getMissiles() {

@@ -79,7 +79,7 @@ public class Board extends JPanel implements ActionListener{
         
         for(int[] position : enemyPositions){
             
-            enemies.add(new Enemy(position[0], position[1]));
+            enemies.add(new EnemyA(position[0], position[1]));
         }
         
     }
@@ -214,6 +214,7 @@ public class Board extends JPanel implements ActionListener{
 //            }
 //            
 //        }
+    	
     	for(Tower tower : towers){
     		ArrayList<Missile> missiles = tower.getMissiles();
         
@@ -223,8 +224,10 @@ public class Board extends JPanel implements ActionListener{
     			for(Enemy enemy :enemies){
     				Rectangle r2 = enemy.getBounds();
     				if(r1.intersects(r2)){
+    					
     					missile.setVisible(false);
-    					enemy.setVisible(false);
+    					enemy.bloodLoss(missile.getMissilePower());
+//    					enemy.setVisible(false);
     				}
     			}
     		}
