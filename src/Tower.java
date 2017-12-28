@@ -8,27 +8,16 @@ public class Tower extends GameObject{
     
     public Tower(int x, int y){
         super(x, y);
-        initCraft();
+        initTower();
     }
     
-    private void initCraft(){
+    private void initTower(){
         missiles = new ArrayList<Missile>();
         loadImage("com\\moving_sprite\\craft.png");
         getImageDimensions();
     }
     
-    public void move(){
-        x += dx;
-        y += dy;
-        
-        if (x < 1) {
-            x = 1;
-        }
-
-        if (y < 1) {
-            y = 1;
-        }
-    }
+    
     
     public ArrayList getMissiles() {
         return missiles;

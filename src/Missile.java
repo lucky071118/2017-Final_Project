@@ -17,7 +17,7 @@ public class Missile extends GameObject{
     
     public void move() {
         
-        x += MISSILE_SPEED;
+        x -= MISSILE_SPEED;
         
         if (x > BOARD_WIDTH) {
             isVisible = false;

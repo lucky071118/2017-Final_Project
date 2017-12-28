@@ -17,10 +17,10 @@ public class Enemy extends GameObject{
     
     public void move() {
 
-        if (x < 0) {
-            x = INITIAL_X;
-        }
+//        if (x < 0) {
+//            x = INITIAL_X;
+//        }
 
-        x -= 1;
+        x += 1;
     }
 }

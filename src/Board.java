@@ -12,8 +12,6 @@ import javax.swing.Timer;
 import javax.swing.JPanel;
 
 public class Board extends JPanel implements ActionListener{
-	private final int ICRAFT_X = 40;
-    private final int ICRAFT_Y = 60;
     private final int DELAY = 15;
     private final int B_WIDTH = 400;
     private final int B_HEIGHT = 300;
@@ -22,17 +20,21 @@ public class Board extends JPanel implements ActionListener{
     private ArrayList<Enemy> enemies;
     private boolean ingame;
     
-    private final int[][] positions = {
-        {2380, 29}, {2500, 59}, {1380, 89},
-        {780, 109}, {580, 139}, {680, 239},
-        {790, 259}, {760, 50}, {790, 150},
-        {980, 209}, {560, 45}, {510, 70},
-        {930, 159}, {590, 80}, {530, 60},
-        {940, 59}, {990, 30}, {920, 200},
-        {900, 259}, {660, 50}, {540, 90},
-        {810, 220}, {860, 20}, {740, 180},
-        {820, 128}, {490, 170}, {700, 30}
+    private final int[][] enemyPositions = {
+        {0, 29}, {-5, 59}, {-6, 89},
+        {-78, 109}, {-6, 139}, {-6, 239},
+        {-79, 259}, {-21, 50}, {-20, 150},
+        {-98, 209}, {-560, 45}, {-510, 70},
+        {-93, 159}, {-590, 80}, {-530, 60},
+        {-940, 59}, {-990, 30}, {-920, 200},
+        {-900, 259}, {-660, 50}, {-540, 90},
+        {-810, 220}, {-860, 20}, {-740, 180},
+        {-820, 128}, {-490, 170}, {-700, 30}
     };
+    
+    private final int[][] towerPositions = {
+            {300, 29}, {250, 59}
+        };
     
     
     public Board(){
@@ -60,16 +62,15 @@ public class Board extends JPanel implements ActionListener{
     private void initTowers(){
     	towers = new ArrayList<Tower> ();
         
-    	Tower tower = new Tower(ICRAFT_X, ICRAFT_Y);
-    	towers.add(tower);
-       
-        
+    	for(int[] position : towerPositions) {
+    		towers.add(new Tower(position[0], position[1]));
+    	}
     }
     
     private void initEnemies(){
         enemies = new ArrayList<Enemy> ();
         
-        for(int[] position : positions){
+        for(int[] position : enemyPositions){
             
             enemies.add(new Enemy(position[0], position[1]));
         }
