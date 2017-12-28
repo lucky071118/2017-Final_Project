@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public abstract class Tower extends GameObject{
 	
-    private ArrayList<Missile> missiles;
+    protected ArrayList<Missile> missiles;
     private int reloadTime;
     private int firePower;
     private boolean canFire;
@@ -35,7 +35,8 @@ public abstract class Tower extends GameObject{
     public void fire() {
     	
     	if(canFire) {
-    		missiles.add(new Missile(x + width, y + height / 2));
+    		shootMissiles();
+    		
     		
     		reloadCounter = 1;
     		canFire = false;
@@ -47,4 +48,7 @@ public abstract class Tower extends GameObject{
         	canFire = true;
         }
     }
+    
+    protected abstract void shootMissiles();
+    
 }

@@ -13,7 +13,9 @@ public class TowerA extends Tower{
 		return "bin\\TowerA.png";
 	}
 	
-	
+	protected  void shootMissiles() {
+		missiles.add(new MissileA(x + width, y + height / 2));
+	}
 	
 	
 }

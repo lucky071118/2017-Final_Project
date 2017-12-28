@@ -2,11 +2,13 @@
 public class Missile extends GameObject{
 	
 //	private final int BOARD_WIDTH = 390;
-    private final int MISSILE_SPEED = 2;
+    private int speed;
+    private int power;
     
-    public Missile(int x, int y){
+    public Missile(int x, int y, int speed, int power){
         super(x, y);
-        
+        this.speed = speed;
+        this.power = power;
         initMissile();
     }
     
@@ -17,7 +19,7 @@ public class Missile extends GameObject{
     
     public void move() {
         
-        x -= MISSILE_SPEED;
+        x -= speed;
         
         if (x < 0) {
             isVisible = false;

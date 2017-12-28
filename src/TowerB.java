@@ -8,4 +8,8 @@ public class TowerB extends Tower{
 	protected String getImageFile() {
 		return "bin\\TowerA.png";
 	}
+	
+	protected  void shootMissiles() {
+		missiles.add(new MissileB(x + width, y + height / 2));
+	}
 }
