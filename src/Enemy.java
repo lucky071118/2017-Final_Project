@@ -5,10 +5,10 @@ public class Enemy extends GameObject{
 
     public Enemy(int x, int y){
         super(x, y);
-        initAlien();
+        initEnemy();
     }
     
-    private void  initAlien(){
+    private void  initEnemy(){
         
         loadImage("com\\moving_sprite\\alien.png");
         getImageDimensions();
