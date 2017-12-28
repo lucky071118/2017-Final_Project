@@ -3,7 +3,7 @@ import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
 
-public class GameObject {
+public abstract class GameObject {
 	
 	//object coordinates  
 	protected int x;
