@@ -3,37 +3,39 @@ import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.Timer;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 public class Board extends JPanel implements ActionListener{
     private final int DELAY = 15;
     private final int B_WIDTH = 1200;
-    private final int B_HEIGHT = 900;
+    private final int B_HEIGHT = 540;
     private Timer timer;
     private ArrayList<Tower> towers;
     private ArrayList<Enemy> enemies;
     private boolean ingame;
     private TowerTimer towerTimer;
     private final int[][] enemyPositions = {
-        {0, 29}, {0, 59}, {0, 89},
-        {-78, 109}, {-6, 139}, {0, 239},
-        {-79, 259}, {-21, 50}, {0, 150},
-        {-98, 209}, {-560, 45}, {-510, 70},
-        {-93, 159}, {-590, 80}, {-530, 60},
-        {-940, 59}, {-990, 30}, {-920, 200},
-        {-900, 259}, {-660, 50}, {-540, 90},
-        {-810, 220}, {-860, 20}, {-740, 180},
-        {-820, 128}, {-490, 170}, {-700, 30}
+        {0, 0}, {0, 0}, {0, 180},
+        {-78, 180}, {-6, 180}, {0, 0},
+        {-79, 0}, {-21, 180}, {0, 180},
+        {-98, 180}, {-560, 0}, {-510, 0},
+        {-93, 0}, {-590, 180}, {-530, 180},
+        {-940, 180}, {-990, 0}, {-920, 0},
+        {-900, 0}, {-660, 180}, {-540, 180},
+        {-810, 180}, {-860, 0}, {-740, 180},
+        {-820, 0}, {-490, 180}, {-700, 0}
     };
     
     private final int[][] towerPositions = {
-            {1000, 29}, {900, 59}
+            {1020, 0}, {1020, 180}, {1020, 360},{1020, 540}
         };
     
     
@@ -69,6 +71,8 @@ public class Board extends JPanel implements ActionListener{
         
     	towers.add(new TowerA(towerPositions[0][0],towerPositions[0][1]));
     	towers.add(new TowerB(towerPositions[1][0],towerPositions[1][1]));
+    	towers.add(new TowerA(towerPositions[2][0],towerPositions[2][1]));
+    	towers.add(new TowerB(towerPositions[3][0],towerPositions[3][1]));
 //    	for(int[] position : towerPositions) {
 //    		towers.add(new TowerA(position[0], position[1]));
 //    	}
@@ -81,7 +85,7 @@ public class Board extends JPanel implements ActionListener{
             
             enemies.add(new EnemyA(position[0], position[1]));
         }
-        enemies.add(new EnemyB(0, 300));
+        enemies.add(new EnemyB(0, 100));
     }
     
     
@@ -101,8 +105,13 @@ public class Board extends JPanel implements ActionListener{
     }
     
     private void drawObjects(Graphics g){
+    	
+    	
+    	
         Graphics2D g2d = (Graphics2D) g;
+        ImageIcon imageIcon = new ImageIcon("bin\\mountain.png");
         
+        g2d.drawImage(imageIcon.getImage(), 0, 0, this);
         for(Tower tower : towers){
         	if(tower.isVisible()){
                 g2d.drawImage(tower.getImage(), tower.getX(), tower.getY(), this);
@@ -128,6 +137,9 @@ public class Board extends JPanel implements ActionListener{
         
         g.setColor(Color.WHITE);
         g.drawString("Enemies left: " + enemies.size(), 5, 15);
+        
+      
+        
     }
     
     private void drawGameOver(Graphics g){

@@ -2,11 +2,11 @@
 public class MissileB extends Missile{
 	
 	public MissileB(int x, int y) {
-		super(x, y, 4, 10);
+		super(x, y, 4, 100);
 	}
 	
 	protected String getImageName() {
-		return "bin\\MissileA.png";
+		return "bin\\MissileB.png";
 		
 	}
 	

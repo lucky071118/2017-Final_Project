@@ -6,10 +6,10 @@ public class TowerB extends Tower{
 	}
 	
 	protected String getImageName() {
-		return "bin\\TowerA.png";
+		return "bin\\TowerB.png";
 	}
 	
 	protected  void shootMissiles() {
-		missiles.add(new MissileB(x + width, y + height / 2));
+		missiles.add(new MissileB(x , y + height / 6));
 	}
 }

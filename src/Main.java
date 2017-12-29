@@ -12,7 +12,7 @@ public class Main extends JFrame{
         
         add(new Board());
         
-        setSize(1200, 900);
+        setSize(1740, 720);
         setResizable(false);
         
         setTitle("Tower Defense Game");

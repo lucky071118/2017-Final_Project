@@ -14,7 +14,7 @@ public abstract class Enemy extends GameObject{
     
     private void  initEnemy(){
         
-        loadImage("bin\\EnemyA.png");
+        loadImage(getImageName());
         getImageDimensions();
         
     }
