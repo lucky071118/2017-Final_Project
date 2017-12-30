@@ -2,14 +2,12 @@
 public class TowerB extends Tower{
 
 	public TowerB(int x, int y) {
-		super(x, y, 3);
+		super(x, y, 3, new Missile(x, y, 2, 100, "bin\\MissileB.png"), new OneWayShoot(), "bin\\TowerB.png");
 	}
 	
-	protected String getImageName() {
-		return "bin\\TowerB.png";
-	}
 	
-	protected  void shootMissiles() {
-		missiles.add(new MissileB(x , y + height / 6));
-	}
+	
+	
+	
+	
 }

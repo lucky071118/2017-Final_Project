@@ -59,5 +59,14 @@ public abstract class GameObject {
         return new Rectangle(x, y, width, height);
     }
     
-    protected abstract String getImageName();
+    
+    
+    public int getWidth() {
+    	return width;
+    }
+    
+    public int getHeight() {
+    	return height;
+    }
+    
 }

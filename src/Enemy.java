@@ -32,4 +32,6 @@ public abstract class Enemy extends GameObject{
     		isVisible = false;
     	}
     }
+    
+    protected abstract String getImageName();
 }

@@ -7,7 +7,7 @@ import javax.swing.Timer;
 public class TowerTimer implements ActionListener{
 	
 	private Timer timer;
-	private final int DELAY = 200;
+	private final int DELAY = 1000;
 	private Tower[] towers;
 	
 	private static TowerTimer towerATimer;
