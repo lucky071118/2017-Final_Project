@@ -1,3 +1,4 @@
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -9,10 +10,13 @@ public class Main extends JFrame{
     }
     
     private void initUI() {
-        
-        add(new Board());
-        
-        setSize(1740, 720);
+    	
+    	Board board = new Board();
+        add(board,BorderLayout.CENTER);
+        TowerPanel towerPanel = new TowerPanel(board.getTowers());
+        add(towerPanel,BorderLayout.EAST);
+        pack();
+        setSize(1800, 720);
         setResizable(false);
         
         setTitle("Tower Defense Game");

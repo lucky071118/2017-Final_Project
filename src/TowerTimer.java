@@ -8,7 +8,7 @@ public class TowerTimer implements ActionListener{
 	
 	private Timer timer;
 	private final int DELAY = 200;
-	private ArrayList<Tower> towers;
+	private Tower[] towers;
 	
 	private static TowerTimer towerATimer;
 	
@@ -31,7 +31,7 @@ public class TowerTimer implements ActionListener{
 		return towerATimer;
 	}
 	
-	public void  setTowers(ArrayList<Tower> towers){
+	public void  setTowers(Tower[] towers){
 		this.towers = towers;
 	}
 	
