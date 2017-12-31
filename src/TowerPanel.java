@@ -8,14 +8,17 @@ import javax.swing.JPanel;
 public class TowerPanel extends JPanel {
 	
 	public TowerPanel(Tower[] towers) {
-		for(Tower tower : towers) {
-			add(new TowerButton(tower.getX(), tower.getY(), tower.getImage()));
-			
+		for(int i=0; i< towers.length; i++) {
+			add(new TowerButton(i, towers[i].getImage()));	
 		}
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		
 		
 	}
+	
+//	public void initPanel() {
+//		
+//	}
 	
 	
 	

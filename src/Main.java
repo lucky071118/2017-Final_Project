@@ -12,11 +12,13 @@ public class Main extends JFrame{
     private void initUI() {
     	
     	Board board = new Board();
+    	Model model = new Model();
+    	Controller controller = new Controller(model, board);
         add(board,BorderLayout.CENTER);
-        TowerPanel towerPanel = new TowerPanel(board.getTowers());
+        TowerPanel towerPanel = new TowerPanel(model.getTowers());
         add(towerPanel,BorderLayout.EAST);
         pack();
-        setSize(1800, 720);
+        setSize(1600, 720);
         setResizable(false);
         
         setTitle("Tower Defense Game");

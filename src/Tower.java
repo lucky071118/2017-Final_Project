@@ -6,23 +6,25 @@ import javax.swing.ImageIcon;
 
 public abstract class Tower extends GameObject{
 	
-    protected ArrayList<Missile> missiles;
+    
     private int reloadTime;
     private boolean canFire;
     private int reloadCounter;
     private Missile missile;
     protected String missileImageName;
     protected ShootStrategy shootStrategy;
+    private int number;
     
     public Tower(int x, int y, int reloadTime, Missile missile,ShootStrategy shootStrategy, String imageName){
         super(x, y);
         this.reloadTime = reloadTime;
         this.missile = missile;
 		this.shootStrategy = shootStrategy;
+		this.number = y/100;
 		
         initTower(imageName);
         
-        missiles = new ArrayList<Missile>();
+      
     }
     
    
@@ -32,24 +34,12 @@ public abstract class Tower extends GameObject{
         getImageDimensions();
     }
     
-   
-   
-   
-   
-  
     
-    public ArrayList<Missile> getMissiles() {
-        return missiles;
-    }
-    
-    
-  
-    
-    public void fire() {
+    public ArrayList<Missile> fire() {
     	
+    	ArrayList<Missile> result = null;
     	if(canFire) {
-    		missiles.addAll(shootStrategy.shoot(missile));
-    		
+    		result = shootStrategy.shoot(missile);
     		
     		reloadCounter = 1;
     		canFire = false;
@@ -60,15 +50,13 @@ public abstract class Tower extends GameObject{
         if(reloadCounter == reloadTime ) {
         	canFire = true;
         }
+        return result;
     }
     
     
-    
-//    public Missile CreateMissile() {
-//    	return new Missile
-//    }
-    
-//    protected abstract void shootMissiles();
+    public int getNumber() {
+    	return number;
+    }
     
    
     

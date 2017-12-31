@@ -13,11 +13,6 @@ public class TowerA extends Tower{
 	
 	
 	
-//	protected  void shootMissiles() {
-//		missiles.add(new MissileA(x , y + height / 8));
-//		missiles.add(new MissileA(x , y + height / 8));
-//		missiles.add(new MissileA(x , y + height / 8));
-//	}
-	
+
 	
 }

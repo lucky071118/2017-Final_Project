@@ -7,8 +7,9 @@ import javax.swing.Timer;
 public class TowerTimer implements ActionListener{
 	
 	private Timer timer;
-	private final int DELAY = 1000;
+	private final int DELAY = 800;
 	private Tower[] towers;
+	private ArrayList<Missile> missiles;
 	
 	private static TowerTimer towerATimer;
 	
@@ -18,9 +19,14 @@ public class TowerTimer implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		ArrayList<Missile> newMissiles = new ArrayList<Missile>();
 		for(Tower tower : towers) {
-			tower.fire(); 
+			ArrayList<Missile> result = tower.fire();
+			if(result != null) {
+				newMissiles.addAll(result); 
+			}
 		}
+		missiles.addAll(newMissiles);
 	}
 	
 	public static TowerTimer getActionListener() {
@@ -33,6 +39,10 @@ public class TowerTimer implements ActionListener{
 	
 	public void  setTowers(Tower[] towers){
 		this.towers = towers;
+	}
+	
+	public void setMissiles(ArrayList<Missile> missiles) {
+		this.missiles = missiles;
 	}
 	
 	

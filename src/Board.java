@@ -18,7 +18,7 @@ public class Board extends JPanel implements ActionListener{
     private final int B_WIDTH = 1740;
     private final int B_HEIGHT = 720;
     private Timer timer;
-    private Tower[] towers;
+    private ArrayList<Missile> missiles;
     private ArrayList<Enemy> enemies;
     private boolean ingame;
     private TowerTimer towerTimer;
@@ -51,7 +51,7 @@ public class Board extends JPanel implements ActionListener{
         
         ingame = true;
         
-        initTowers();
+       
         
         
         initEnemies();
@@ -59,19 +59,10 @@ public class Board extends JPanel implements ActionListener{
         timer = new Timer(DELAY, this);
         timer.start();
         
-        towerTimer = TowerTimer.getActionListener();
-        towerTimer.setTowers( towers);
-        towerTimer.startTime();
+        missiles = new ArrayList<Missile>();
         
     }
-    
-    private void initTowers(){
-    	towers = new Tower[7];
-    	for(int i=0; i<towers.length; i++) {
-    		towers[i] = new TowerA(1700, i*100);
-    	}
-    	
-    }
+   
     
     private void initEnemies(){
         enemies = new ArrayList<Enemy> ();
@@ -113,14 +104,13 @@ public class Board extends JPanel implements ActionListener{
 //            }
 //        }
         
-        for(Tower tower : towers){
-        	  ArrayList<Missile> missiles = tower.getMissiles();
-              for(Missile missile : missiles){
-                  if(missile.isVisible()){
-                      g2d.drawImage(missile.getImage(), missile.getX(), missile.getY(), this);
-                  }
-              }
-        }
+       
+        	 
+        for(Missile missile : missiles){
+			if (missile.isVisible()) {
+				g2d.drawImage(missile.getImage(), missile.getX(), missile.getY(), this);
+			}
+		}
         
       
         
@@ -177,17 +167,17 @@ public class Board extends JPanel implements ActionListener{
     
     
     private void updateMissiles(){
-    	for(Tower tower : towers){
-    		ArrayList<Missile> missiles = tower.getMissiles();
-    		for(int i = 0; i < missiles.size(); i++){
-    			Missile missile = missiles.get(i);
-    			if(missile.isVisible()){
-    				missile.move();
-    			}else{
-    				missiles.remove(i);
-    			}
-    		}
-    	 }  
+    	
+    		
+		for (int i = 0; i < missiles.size(); i++) {
+			Missile missile = missiles.get(i);
+			if (missile.isVisible()) {
+				missile.move();
+			} else {
+				missiles.remove(i);
+			}
+		}
+    	  
     }
     
     private void updateEnemies(){
@@ -210,41 +200,34 @@ public class Board extends JPanel implements ActionListener{
     
     private void checkCollisions(){
         
-//        Rectangle r3 = craft.getBounds();
-//        
-//        for(Alien alien :enemies){
-//            Rectangle r2 = alien.getBounds();
-//            if(r3.intersects(r2)){
-//                craft.setVisible(false);
-//                alien.setVisible(false);
-//                ingame = false;
-//            }
-//            
-//        }
     	
-    	for(Tower tower : towers){
-    		ArrayList<Missile> missiles = tower.getMissiles();
-        
-    		for(Missile missile : missiles){
-    			Rectangle r1 = missile.getBounds();
-            
-    			for(Enemy enemy :enemies){
-    				Rectangle r2 = enemy.getBounds();
-    				if(r1.intersects(r2)){
-    					
-    					missile.setVisible(false);
-    					enemy.bloodLoss(missile.getMissilePower());
-//    					enemy.setVisible(false);
-    				}
-    			}
-    		}
+    	
+		for (Missile missile : missiles) {
+			Rectangle r1 = missile.getBounds();
+
+			for (Enemy enemy : enemies) {
+				Rectangle r2 = enemy.getBounds();
+				if (r1.intersects(r2)) {
+
+					missile.setVisible(false);
+					enemy.bloodLoss(missile.getMissilePower());
+					
+				}
+			}
+    		
     	}
         
         
     }
     
-    public Tower[] getTowers() {
-    	return towers;
+    
+    
+    public ArrayList<Missile> getMissiles(){
+    	return missiles;
+    }
+    
+    public void addMissiles(ArrayList<Missile> newMissiles) {
+    	missiles.addAll(newMissiles);
     }
     
     
