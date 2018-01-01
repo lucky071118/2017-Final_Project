@@ -1,8 +1,12 @@
 import java.awt.event.ActionListener;
 
+import javax.swing.JDialog;
+
 public class Controller {
 	private TowerTimer towerTimer;
 	private TowerButtonListener towerButtonListener;
+
+	
 	private Model model;
 	private Board board;
 	private TowerPanel towerPanel;
@@ -15,7 +19,7 @@ public class Controller {
 		
 		initTowerTimer();
 		initTowerButtonListener();
-		setTowerButtonListener();
+		initUpdateButtonListener();
 	}
 	
 	private void initTowerTimer() {
@@ -25,14 +29,18 @@ public class Controller {
         towerTimer.startTime();
 	}
 	
-	public void initTowerButtonListener() {
+	private void initTowerButtonListener() {
 		towerButtonListener = new TowerButtonListener();
 		towerButtonListener.setTowers(model.getTowers());
-	}
-	
-	public void setTowerButtonListener() {
 		towerPanel.setActionListener(towerButtonListener);
 	}
+	
+	private void initUpdateButtonListener() {
+		
+		
+	}
+	
+	
 	
 	
 		

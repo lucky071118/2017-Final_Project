@@ -17,20 +17,22 @@ public class TowerB extends Tower{
 	
 	
 	protected  void dialogMissilePower(ArrayList<String> result) {
-		if(missile.getMissilePower()<= TowerB.MaxMissilePower) {
-			result.add("Strengthen missile");
+		int power = missile.getMissilePower();
+		if( power <= TowerB.MaxMissilePower) {
+			result.add("Strengthen missile ("+ power+"+100"+")");
 		}
 	}
 	
 	protected void dialogMissileSpeed(ArrayList<String> result) {
-		if(missile.getMissileSpeed() <= TowerB.MaxMissileSpeed) {
-			result.add("Accelerate missile");
+		int speed = missile.getMissileSpeed();
+		if( speed <= TowerB.MaxMissileSpeed) {
+			result.add("Accelerate missile ("+ speed+"+1"+")");
 		}
 	}
 	
 	protected void dialogReloadTime(ArrayList<String> result) {
 		if(reloadTime >= TowerB.MinReloadTime) {
-			result.add("Accelerate reload");
+			result.add("Reduce reload time ("+ reloadTime+"-1"+")");
 		}
 	}
 	

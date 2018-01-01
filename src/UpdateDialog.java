@@ -2,13 +2,13 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
-
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class UpdateDialog extends JDialog{
 	
-	public UpdateDialog(ArrayList<String> StringResults,JButton towerButton) {
+	public UpdateDialog(ArrayList<String> StringResults,ActionListener buttonListener) {
 		setTitle("Update Tower");
 		
 		setLayout(new GridLayout(StringResults.size(), 1));
@@ -18,6 +18,7 @@ public class UpdateDialog extends JDialog{
 		
 		for(String result : StringResults) {
 			JButton button = new JButton(result);
+			button.addActionListener(buttonListener);
 			add(button);
 		}
 		
@@ -31,10 +32,12 @@ public class UpdateDialog extends JDialog{
 		
 		
 		
-		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+//		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setModal(true);
-		setLocationRelativeTo(towerButton);
+		
 		pack();
-		setVisible(true);
+		
 	}
+	
+	
 }
