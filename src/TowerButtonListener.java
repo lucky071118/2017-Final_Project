@@ -24,7 +24,7 @@ public class TowerButtonListener implements ActionListener{
 			
 			int number = towerButton.getNumber();
 			Tower target = towers[number];
-			
+			updateButtonListener.setTower(target);
 			
 			
 			ArrayList<String> result = target.updateDoalogInformation();

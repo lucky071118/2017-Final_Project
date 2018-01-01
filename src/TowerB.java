@@ -6,6 +6,7 @@ public class TowerB extends Tower{
 	public static final int MaxMissilePower = 300;
 	public static final int MaxMissileSpeed = 4;
 	public static final int MinReloadTime = 3;
+	private String type = "TowerB";
 	public static final String[] canShootStrategy= {
 			"OneWayShoot", 
 			"DoubleShoot",
@@ -49,6 +50,55 @@ public class TowerB extends Tower{
 		
 	}
 	
+	protected void dialogTower(ArrayList<String> result) {
+		for(String towerType : TowerCatalog) {
+			if( !(towerType.equals(type))) {
+				result.add("change to "+towerType);
+			}
+		}
+		
+	}
+	
+	
+	public void updateMissilePower() {
+		int power = missile.getMissilePower();
+		if(power <= TowerB.MaxMissilePower) {
+			power += 30;
+		}
+	}
+	
+	public void updateMissileSpeed() {
+		int speed = missile.getMissileSpeed();
+		if( speed <= TowerB.MaxMissileSpeed) {
+			speed += 1;
+		}
+	}
+	
+	public void updateReloadTime() {
+		if(reloadTime >= TowerB.MinReloadTime) {
+			reloadTime -= 1;
+		}
+		
+	}
+	
+	public void updateShootStrategy(String shootStrategyType) {
+		switch (shootStrategyType) {
+			case "OneWayShoot":
+				shootStrategy = new OneWayShoot();
+				break;
+				
+			case "DoubleShoot":
+				shootStrategy = new DoubleShoot();
+				break;
+				
+			
+				
+			default:
+				
+			
+				
+		}
+	}
 	
 	
 }

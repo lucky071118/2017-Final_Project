@@ -14,6 +14,7 @@ public abstract class Tower extends GameObject{
     protected String missileImageName;
     protected ShootStrategy shootStrategy;
     private int number;
+    public static final String[] TowerCatalog = {"TowerA", "TowerB"};
     
     public Tower(int x, int y, int reloadTime, Missile missile,ShootStrategy shootStrategy, String imageName){
         super(x, y);
@@ -70,7 +71,7 @@ public abstract class Tower extends GameObject{
 		dialogMissileSpeed(result);
 		dialogReloadTime(result);
 		dialogShootStrategy( result);
-		
+		dialogTower(result);
 	
 		return result;
 	}
@@ -80,5 +81,11 @@ public abstract class Tower extends GameObject{
     protected abstract void dialogMissileSpeed(ArrayList<String> result);
     protected abstract void dialogReloadTime(ArrayList<String> result);
     protected abstract void dialogShootStrategy(ArrayList<String> result);
+    protected abstract void dialogTower(ArrayList<String> result);
+    
+    public abstract void updateMissilePower();
+    public abstract void updateMissileSpeed();
+    public abstract void updateReloadTime();
+    public abstract void updateShootStrategy(String shootStrategyType);
     
 }

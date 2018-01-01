@@ -6,8 +6,9 @@ import javax.swing.Timer;
 public class TowerA extends Tower{
 	
 	public static final int MaxMissilePower = 90;
-	public static final int MaxMissileSpeed = 6;
+	public static final int MaxMissileSpeed = 5;
 	public static final int MinReloadTime = 1;
+	private String type = "TowerA";
 	public static final String[] canShootStrategy= {
 			"OneWayShoot", 
 			"DoubleShoot",
@@ -16,7 +17,7 @@ public class TowerA extends Tower{
 	
 	public TowerA(int x, int y) {
 		
-		super(x, y, 4, new Missile(x, y, 3, 30, "bin\\MissileA.png"), new DoubleShoot(), "bin\\TowerA.png");
+		super(x, y, 4, new Missile(x, y, 3, 30, "bin\\MissileA.png"), new OneWayShoot(), "bin\\TowerA.png");
 	}
 	
 	
@@ -24,21 +25,21 @@ public class TowerA extends Tower{
 	
 	protected  void dialogMissilePower(ArrayList<String> result) {
 		int power = missile.getMissilePower();
-		if(power <= TowerA.MaxMissilePower) {
+		if(power < TowerA.MaxMissilePower) {
 			result.add("Strengthen missile ("+ power+"+30"+")");
 		}
 	}
 	
 	protected void dialogMissileSpeed(ArrayList<String> result) {
 		int speed = missile.getMissileSpeed();
-		if( speed <= TowerA.MaxMissileSpeed) {
+		if( speed < TowerA.MaxMissileSpeed) {
 			result.add("Accelerate missile ("+ speed+"+1"+")");
 		}
 	}
 	
 	protected void dialogReloadTime(ArrayList<String> result) {
 		
-		if(reloadTime >= TowerA.MinReloadTime) {
+		if(reloadTime > TowerA.MinReloadTime) {
 			result.add("Reduce reload time ("+ reloadTime+"-1"+")");
 		}
 	}
@@ -51,11 +52,57 @@ public class TowerA extends Tower{
 		
 		for(int i=0; i < canShootStrategy.length; i++) {
 			if(!canShootStrategy[i].equals(strategy)){
-				result.add(canShootStrategy[i]);
+				result.add("Switch to " + canShootStrategy[i]);
+			}
+		}
+	}
+	
+	protected void dialogTower(ArrayList<String> result) {
+		for(String towerType : TowerCatalog) {
+			if( !(towerType.equals(type))) {
+				result.add("Change to" + towerType);
 			}
 		}
 		
+	}
+	
+	public void updateMissilePower() {
+		int power = missile.getMissilePower();
+		if(power < TowerA.MaxMissilePower) {
+			missile.setMissilePower(power+30);
+		}
+	}
+	
+	public void updateMissileSpeed() {
+		int speed = missile.getMissileSpeed();
+		if( speed < TowerA.MaxMissileSpeed) {
+			missile.setMissileSpeed(speed+1);
+		}
+	}
+	
+	public void updateReloadTime() {
+		if(reloadTime > TowerA.MinReloadTime) {
+			reloadTime -= 1;
+		}
 		
+	}
+	
+	public void updateShootStrategy(String shootStrategyType) {
+		switch (shootStrategyType) {
+			case "OneWayShoot":
+				shootStrategy = new OneWayShoot();
+				break;
+				
+			case "DoubleShoot":
+				shootStrategy = new DoubleShoot();
+				break;
+				
+			case "ThreeWayShoot":
+				shootStrategy = new ThreeWayShoot();
+				break;
+			
+				
+		}
 	}
 	
 }

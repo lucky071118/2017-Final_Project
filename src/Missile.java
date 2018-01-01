@@ -38,12 +38,12 @@ public class Missile extends GameObject{
         
         double resultY = speed * dy;
         double sign = Math.signum(resultY);
-        if(Math.abs(resultY) < 1.0) {
-        	resultY = 1.0;
-        }
+      
+        resultY = Math.ceil(Math.abs(resultY));
+       
         
         resultY *= sign ;
-        
+        System.out.println(resultY);
         
         y += resultY;
        
@@ -59,6 +59,14 @@ public class Missile extends GameObject{
     
     public int getMissileSpeed() {
     	return speed;
+    }
+    
+    public void setMissilePower(int power) {
+    	this.power = power;
+    }
+    
+    public void setMissileSpeed(int speed) {
+    	this.speed = speed;
     }
     
     public Missile copyMissile() {
