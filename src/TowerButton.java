@@ -22,6 +22,7 @@ public class TowerButton extends JButton{
 	
 	public TowerButton(int number, Image image) {
 		
+		
 		this.number = number;
 		
 		setMaximumSize(new Dimension(100, 100));

@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 
 public abstract class Tower extends GameObject{
 	
-    
+    public String test;
     protected int reloadTime;
     private boolean canFire;
     private int reloadCounter;
@@ -24,7 +24,7 @@ public abstract class Tower extends GameObject{
 		this.number = y/100;
 		
         initTower(imageName);
-        
+        test = imageName;
       
     }
     

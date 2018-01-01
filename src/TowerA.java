@@ -60,7 +60,7 @@ public class TowerA extends Tower{
 	protected void dialogTower(ArrayList<String> result) {
 		for(String towerType : TowerCatalog) {
 			if( !(towerType.equals(type))) {
-				result.add("Change to" + towerType);
+				result.add("Change to " + towerType);
 			}
 		}
 		

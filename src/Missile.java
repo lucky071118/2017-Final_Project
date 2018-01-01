@@ -43,7 +43,7 @@ public class Missile extends GameObject{
        
         
         resultY *= sign ;
-        System.out.println(resultY);
+        
         
         y += resultY;
        
