@@ -18,7 +18,7 @@ public class TowerButton extends JButton{
 	
 	private int number;
 
-//	private ActionListener actionListener;
+//	private ActionListener towerButtonListener;
 	
 	public TowerButton(int number, Image image) {
 		
@@ -34,7 +34,10 @@ public class TowerButton extends JButton{
 		imageIcon = new ImageIcon(image);
 		setIcon(imageIcon);
 		setBackground(Color.GRAY);
-		addActionListener(actionListener);
+		
+		
+		
+		
 
 			
 	
@@ -45,15 +48,10 @@ public class TowerButton extends JButton{
 	
 	
 	
-	private ActionListener actionListener = new ActionListener() {
-		@Override
-		
-		public void actionPerformed(ActionEvent e) {
-			TowerButton  towerButton = (TowerButton )e.getSource();
-			new DialogFactoryA(towerButton.getNumber());
-			//JDialog dialog = new UpdateDialog((JButton)e.getSource());
-		}
-	};
+	
+	
+	
+	
 	
 	
 	public int getNumber() {

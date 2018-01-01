@@ -18,4 +18,9 @@ public class DoubleShoot implements ShootStrategy{
 		
 		return missiles;
 	}
+	
+	
+	public String getType() {
+		return "DoubleShoot";
+	}
 }

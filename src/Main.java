@@ -13,9 +13,10 @@ public class Main extends JFrame{
     	
     	Board board = new Board();
     	Model model = new Model();
-    	Controller controller = new Controller(model, board);
+    	TowerPanel towerPanel = new TowerPanel(model.getTowers());
+    	Controller controller = new Controller(model, board,towerPanel);
+    	
         add(board,BorderLayout.CENTER);
-        TowerPanel towerPanel = new TowerPanel(model.getTowers());
         add(towerPanel,BorderLayout.EAST);
         pack();
         setSize(1600, 720);

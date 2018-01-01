@@ -57,6 +57,10 @@ public class Missile extends GameObject{
     	return power;
     }
     
+    public int getMissileSpeed() {
+    	return speed;
+    }
+    
     public Missile copyMissile() {
     	Missile missile = new Missile(x, y, speed, power, imageName);
     	return missile;

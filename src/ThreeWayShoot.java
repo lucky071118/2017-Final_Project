@@ -18,4 +18,8 @@ public class ThreeWayShoot implements ShootStrategy{
 		
 		return missiles;
 	}
+	
+	public String getType() {
+		return "ThreeWayShoot";
+	}
 }

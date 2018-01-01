@@ -14,4 +14,8 @@ public class OneWayShoot implements ShootStrategy{
 		return missiles;
 	}
 	
+	
+	public String getType() {
+		return "OneWayShoot";
+	}
 }

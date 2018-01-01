@@ -160,10 +160,7 @@ public class Board extends JPanel implements ActionListener{
         }
     }
     
-//    private void updateCraft(){
-//        
-//        craft.move();
-//    }
+
     
     
     private void updateMissiles(){

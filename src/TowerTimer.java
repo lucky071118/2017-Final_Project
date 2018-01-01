@@ -7,7 +7,7 @@ import javax.swing.Timer;
 public class TowerTimer implements ActionListener{
 	
 	private Timer timer;
-	private final int DELAY = 800;
+	private final int DELAY = 200;
 	private Tower[] towers;
 	private ArrayList<Missile> missiles;
 	
