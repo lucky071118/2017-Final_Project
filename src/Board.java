@@ -8,20 +8,27 @@ import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import javax.swing.Timer;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
-public class Board extends JPanel implements ActionListener{
-    private final int DELAY = 15;
-    private final int B_WIDTH = 1740;
-    private final int B_HEIGHT = 720;
-    private Timer timer;
+public class Board extends JPanel{
+   
+    
     private ArrayList<Missile> missiles;
     private ArrayList<Enemy> enemies;
-    private boolean ingame;
-    private TowerTimer towerTimer;
+    
+    private final int boardWidth;
+	private final int boardHeight;
+    
+    
+    private StateInterface state = new GameStartState();
+    private int playerBlood;
+ 
+
     private final int[][] enemyPositions = {
         {0, 0}, {0, 0}, {0, 180},
         {-78, 180}, {-6, 180}, {0, 0},
@@ -37,8 +44,9 @@ public class Board extends JPanel implements ActionListener{
    
     
     
-    public Board(){
-        
+    public Board(int boardWidth, int boardHeight){
+        this.boardWidth = boardWidth;
+        this.boardHeight = boardHeight;
         initBoard();
         
     }
@@ -49,18 +57,16 @@ public class Board extends JPanel implements ActionListener{
         setFocusable(true);
         setBackground(Color.GRAY);
         
-        ingame = true;
-        
+       
        
         
         
         initEnemies();
         
-        timer = new Timer(DELAY, this);
-        timer.start();
+       
         
         missiles = new ArrayList<Missile>();
-        
+        System.out.println("initial board");
     }
    
     
@@ -76,92 +82,39 @@ public class Board extends JPanel implements ActionListener{
     
     
     
-    @Override
-    public void paintComponent(Graphics g){
-        super.paintComponent(g);
-        
-        if (ingame){
-            drawObjects(g);
-        }else{
-            drawGameOver(g);
-        }
-        
-        
-        Toolkit.getDefaultToolkit().sync();
-    }
-    
-    private void drawObjects(Graphics g){
+    public void paint(StateInterface state) {
+    	this.state = state;
+    	repaint();
     	
-    	
-    	
-        Graphics2D g2d = (Graphics2D) g;
-        
-        
-       
-//        for(Tower tower : towers){
-//        	if(tower.isVisible()){
-//                g2d.drawImage(tower.getImage(), tower.getX(), tower.getY(), this);
-//            }
-//        }
-        
-       
-        	 
-        for(Missile missile : missiles){
-			if (missile.isVisible()) {
-				g2d.drawImage(missile.getImage(), missile.getX(), missile.getY(), this);
-			}
-		}
-        
-      
-        
-        for(Enemy enemy : enemies){
-            if(enemy.isVisible()){
-                g2d.drawImage(enemy.getImage(), enemy.getX(), enemy.getY(), this);
-            }
-        }
-        
-        g.setColor(Color.WHITE);
-        g.drawString("Enemies left: " + enemies.size(), 5, 15);
-        
-      
-        
     }
     
-    private void drawGameOver(Graphics g){
-        String msg = "Game Over";
-        Font small = new Font("Helvetica", Font.BOLD, 14);
-        FontMetrics fm = getFontMetrics(small);
-        
-        g.setColor(Color.white);
-        g.setFont(small);
-        g.drawString(msg, (B_WIDTH - fm.stringWidth(msg)) / 2, B_HEIGHT / 2);
-    }
-    
-    
-    @Override
-    public void actionPerformed(ActionEvent e){
-        inGame();
-//        updateCraft();
-        
-        
-        updateMissiles();
-        updateEnemies();
-        
-        checkCollisions();
-        
-        repaint();
-        
-    }
-    
-    
-    private void inGame(){
-        if (!ingame) {
-            timer.stop();
-        }
-    }
     
 
     
+    @Override
+    public void paintComponent(Graphics g){
+    	
+        super.paintComponent(g);
+        state.paint(g, this);
+        Toolkit.getDefaultToolkit().sync();
+    }
+    
+   
+    
+   
+    public void update() {
+    	
+    	
+    	updateMissiles();
+    	updateEnemies();
+       
+    	checkCollisions();
+    	checkBoundary();
+    	repaint();
+    }
+    
+  
+  
     
     private void updateMissiles(){
     	
@@ -179,7 +132,7 @@ public class Board extends JPanel implements ActionListener{
     
     private void updateEnemies(){
         if(enemies.isEmpty()){
-            ingame = false;
+            
             return;
         }
         
@@ -214,18 +167,79 @@ public class Board extends JPanel implements ActionListener{
     		
     	}
         
-        
     }
     
+    private void checkBoundary() {
+    	Rectangle r1 = new Rectangle(boardWidth, 0, 100, boardHeight);
+    	for (Enemy enemy : enemies) {
+			Rectangle r2 = enemy.getBounds();
+			if (r1.intersects(r2)) {
+				enemy.setVisible();
+				playerBlood -= 1;
+			}
+		}
+    	
+    	
+    }
     
     
     public ArrayList<Missile> getMissiles(){
     	return missiles;
     }
     
+    
+    public ArrayList<Enemy> getEnemies(){
+    	return enemies;
+    }
+    
     public void addMissiles(ArrayList<Missile> newMissiles) {
     	missiles.addAll(newMissiles);
     }
+    
+    
+    //Set player blood
+    public void setPlayerBlood(int playerBlood) {
+    	this.playerBlood = playerBlood;
+    }
+    
+    //Get player blood
+    public int getPlayerBlood() {
+    	return playerBlood;
+    }
+    
+    
+    public int getHeight() {
+    	return boardHeight;
+    }
+    
+    public int getWidth() {
+    	return boardWidth;
+    }
+    
+    
+    
+    public boolean checkRound() {
+    	boolean result = true;
+    	if(enemies.isEmpty()){
+    		result = false;
+    	}
+    	return result;
+    }
+    
+    public boolean checkGame() {
+    	boolean result = false;
+    	if(playerBlood == 0){
+    		result = true;
+    	}
+    	return result;
+    }
+    
+   
+    public void setPanelListener(MouseListener startGmaeListener) {
+    	addMouseListener(startGmaeListener);
+    }
+    
+    
     
     
 }

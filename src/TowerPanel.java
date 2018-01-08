@@ -52,6 +52,11 @@ public class TowerPanel extends JPanel {
 		repaint();
 	}
 	
-	
+	public void removeActionListener(ActionListener buttonListener) {
+		for(JButton button : buttonList ) {
+			System.out.println("remove");
+			button.removeActionListener(buttonListener);
+		}
+	}
 	
 }

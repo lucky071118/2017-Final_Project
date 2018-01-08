@@ -13,7 +13,7 @@ public class TowerB extends Tower{
 			};
 	
 	public TowerB(int x, int y) {
-		super(x, y, 12, new Missile(x, y, 2, 100, "bin\\MissileB.png"), new OneWayShoot(), "bin\\TowerB.png");
+		super(x, y, 12, new Missile(x, y+28, 2, 100, "bin\\MissileB.png"), new OneWayShoot(), "bin\\TowerB.png");
 	}
 	
 	
@@ -43,7 +43,7 @@ public class TowerB extends Tower{
 		
 		for(int i=0; i < canShootStrategy.length; i++) {
 			if(!canShootStrategy[i].equals(strategy)){
-				result.add(canShootStrategy[i]);
+				result.add("Switch to " + canShootStrategy[i]);
 			}
 		}
 		
@@ -53,7 +53,7 @@ public class TowerB extends Tower{
 	protected void dialogTower(ArrayList<String> result) {
 		for(String towerType : TowerCatalog) {
 			if( !(towerType.equals(type))) {
-				result.add("change to "+towerType);
+				result.add("Change to "+towerType);
 			}
 		}
 		

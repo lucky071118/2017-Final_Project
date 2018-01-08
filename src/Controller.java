@@ -1,13 +1,16 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.JDialog;
 
 public class Controller {
 	private TowerTimer towerTimer;
+	private AnimationTimer animationTimer;
 	
-
+	private StateInterface state;
 	
 	private Model model;
 	private Board board;
@@ -16,22 +19,30 @@ public class Controller {
 	private JDialog dialog;
 	private int number;
 	
+	
+	
 	public Controller(Model model,Board board, TowerPanel towerPanel) {
 		this.model = model;
 		this.board = board;
 		this.towerPanel = towerPanel;
 		
 		initTowerTimer();
+		initAnimationTimer();
 		
 		
-		towerPanel.setActionListener(towerButtonListener);
+		//Set startGmaeListener
+		board.setPanelListener(startGmaeListener);
+		
 	}
 	
 	private void initTowerTimer() {
 		towerTimer = TowerTimer.getActionListener();
         towerTimer.setTowers( model.getTowers());
         towerTimer.setMissiles( board.getMissiles());
-        towerTimer.startTime();
+	}
+	
+	private void initAnimationTimer() {
+		animationTimer = AnimationTimer.getTimer(animationListener);
 	}
 	
 	
@@ -48,9 +59,6 @@ public class Controller {
 			Tower tower = model.getTower(number);
 			String source = e.getActionCommand();
 			String[] result = source.split("\\s");
-			
-			
-			
 			
 			switch(result[0]) {
 				case "Strengthen":
@@ -124,9 +132,91 @@ public class Controller {
 	
 	
 	
+
 	
 	
 	
+	
+	private ActionListener animationListener = new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			board.update();
+			 
+			board.paint(state);
+			if(board.checkRound()==false) {
+				System.out.println("Round over");
+//				state = new UpdateTowerState(nextRoundListener);
+			}
+			if(board.checkGame()==true) {
+				state = new GameOverState();
+				towerTimer.stopTime();
+				animationTimer.stopTime();
+				System.out.println("Game over");
+				board.paint(state);
+			}
+			
+			
+		}
+	};
+	
+	private MouseListener startGmaeListener = new MouseListener() {
+		public void mouseClicked(MouseEvent e) {
+	       
+	       state = new UpdateTowerState();
+	       board.paint(state);
+	       board.setPanelListener(nextRoundListener);
+	       
+	       towerPanel.setActionListener(towerButtonListener);
+	    }
+		
+		public void mouseExited(MouseEvent e) {
+	        
+	    }
+	    
+	    public void mousePressed(MouseEvent e) {
+	       
+	    }
+	    
+	    public void mouseReleased(MouseEvent e) {
+	        
+	    }
+	    
+	    public void mouseEntered(MouseEvent e) {
+	       
+	    }
+	};
+	
+	
+	private MouseListener nextRoundListener = new MouseListener() {
+		public void mouseClicked(MouseEvent e) {
+			
+			board.setPlayerBlood(5);
+			
+			state = new InGameState();
+			towerPanel.removeActionListener(towerButtonListener);
+			towerTimer.startTime();
+			animationTimer.startTime();
+			
+		}
+			
+		public void mouseExited(MouseEvent e) {
+	        
+	    }
+	    
+	    public void mousePressed(MouseEvent e) {
+	       
+	    }
+	    
+	    public void mouseReleased(MouseEvent e) {
+	        
+	    }
+	    
+	    public void mouseEntered(MouseEvent e) {
+	       
+	    }
+		
+		
+	};
 		
 
 	
