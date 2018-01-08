@@ -44,15 +44,13 @@ public class TowerPanel extends JPanel {
 	public void update(int number, Tower[] towers) {
 		removeAll();
 		revalidate();
-		System.out.println(towers[number].getX());
-		System.out.println(towers[number].getY());
-		System.out.println(towers[number].test);
+		
 		buttonList[number] = null;
 		drawTowerButton(towers);
 		repaint();
 	}
 	
-	public void removeActionListener(ActionListener buttonListener) {
+	public void removeAllActionListener(ActionListener buttonListener) {
 		for(JButton button : buttonList ) {
 			button.removeActionListener(buttonListener);
 		}

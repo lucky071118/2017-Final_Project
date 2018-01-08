@@ -60,7 +60,9 @@ public abstract class Tower extends GameObject{
     }
     
    
-    
+    public Missile getMissile() {
+    	return missile;
+    }
    
    
     

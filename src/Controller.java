@@ -31,7 +31,7 @@ public class Controller {
 		
 		
 		//Set startGmaeListener
-		board.setPanelListener(startGmaeListener);
+		board.addMouseListener(startGmaeListener);
 		
 	}
 	
@@ -39,6 +39,8 @@ public class Controller {
 		towerTimer = TowerTimer.getActionListener();
         towerTimer.setTowers( model.getTowers());
         towerTimer.setMissiles( board.getMissiles());
+        towerTimer.setEnemies( board. getEnemies());
+       
 	}
 	
 	private void initAnimationTimer() {
@@ -149,7 +151,7 @@ public class Controller {
 				animationTimer.stopTime();
 				state = new UpdateTowerState();
 				board.paint(state);
-			    board.setPanelListener(nextRoundListener);
+			    board.addMouseListener(nextRoundListener);
 			    round++;
 			}
 			if(board.checkGame()==true) {
@@ -168,7 +170,7 @@ public class Controller {
 	       
 	       state = new UpdateTowerState();
 	       board.paint(state);
-	       board.setPanelListener(nextRoundListener);
+	       board.addMouseListener(nextRoundListener);
 	       
 	       towerPanel.setActionListener(towerButtonListener);
 	    }
@@ -204,10 +206,11 @@ public class Controller {
 			}
 			
 			state = new InGameState();
-			towerPanel.removeActionListener(towerButtonListener);
+			towerPanel.removeAllActionListener(towerButtonListener);
 			
 			animationTimer.startTime();
 			towerTimer.startTime();
+			board.removeMouseListener(this);
 			
 		}
 			

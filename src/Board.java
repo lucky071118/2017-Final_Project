@@ -52,7 +52,7 @@ public class Board extends JPanel{
         
         missiles = new ArrayList<Missile>();
        
-
+        enemies = new ArrayList<Enemy>();
        
        
     }
@@ -61,7 +61,7 @@ public class Board extends JPanel{
     public void newRound(EnemyFactory factory) {
     	
     	missiles.clear();
-    	enemies = factory.createEnemy(boardWidth,boardHeight);
+    	enemies.addAll( factory.createEnemy(boardWidth,boardHeight));
     }
     
     
@@ -170,6 +170,8 @@ public class Board extends JPanel{
     }
     
     
+    
+    
     public ArrayList<Missile> getMissiles(){
     	return missiles;
     }
@@ -222,9 +224,6 @@ public class Board extends JPanel{
     }
     
    
-    public void setPanelListener(MouseListener startGmaeListener) {
-    	addMouseListener(startGmaeListener);
-    }
     
     
     
