@@ -18,7 +18,7 @@ public class Controller {
 	
 	private JDialog dialog;
 	private int number;
-	
+	private int round = 1;
 	
 	
 	public Controller(Model model,Board board, TowerPanel towerPanel) {
@@ -145,13 +145,17 @@ public class Controller {
 			board.paint(state);
 			if(board.checkRound()==false) {
 				System.out.println("Round over");
-//				state = new UpdateTowerState(nextRoundListener);
+				towerTimer.stopTime();
+				animationTimer.stopTime();
+				state = new UpdateTowerState();
+				board.paint(state);
+			    board.setPanelListener(nextRoundListener);
+			    round++;
 			}
 			if(board.checkGame()==true) {
 				state = new GameOverState();
 				towerTimer.stopTime();
 				animationTimer.stopTime();
-				System.out.println("Game over");
 				board.paint(state);
 			}
 			
@@ -192,10 +196,18 @@ public class Controller {
 			
 			board.setPlayerBlood(5);
 			
+			
+			if(round ==1) {
+				board.newRound(new EnemyRound1());
+			}else if(round ==2) {
+				board.newRound(new EnemyRound2());
+			}
+			
 			state = new InGameState();
 			towerPanel.removeActionListener(towerButtonListener);
-			towerTimer.startTime();
+			
 			animationTimer.startTime();
+			towerTimer.startTime();
 			
 		}
 			

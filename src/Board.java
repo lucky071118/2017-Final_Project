@@ -30,16 +30,9 @@ public class Board extends JPanel{
  
 
     private final int[][] enemyPositions = {
-        {0, 0}, {0, 0}, {0, 180},
-        {-78, 180}, {-6, 180}, {0, 0},
-        {-79, 0}, {-21, 180}, {0, 180},
-        {-98, 180}, {-560, 0}, {-510, 0},
-        {-93, 0}, {-590, 180}, {-530, 180},
-        {-940, 180}, {-990, 0}, {-920, 0},
-        {-900, 0}, {-660, 180}, {-540, 180},
-        {-810, 180}, {-860, 0}, {-740, 180},
-        {-820, 0}, {-490, 180}, {-700, 0}
+        {0, 0}
     };
+    
     
    
     
@@ -57,28 +50,22 @@ public class Board extends JPanel{
         setFocusable(true);
         setBackground(Color.GRAY);
         
-       
-       
-        
-        
-        initEnemies();
-        
-       
-        
         missiles = new ArrayList<Missile>();
-        System.out.println("initial board");
+       
+
+       
+       
     }
-   
     
-    private void initEnemies(){
-        enemies = new ArrayList<Enemy> ();
-        
-        for(int[] position : enemyPositions){
-            
-            enemies.add(new EnemyA(position[0], position[1]));
-        }
-        enemies.add(new EnemyB(0, 360));
+    
+    public void newRound(EnemyFactory factory) {
+    	
+    	missiles.clear();
+    	enemies = factory.createEnemy(boardWidth,boardHeight);
     }
+    
+    
+   
     
     
     

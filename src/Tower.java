@@ -8,7 +8,7 @@ public abstract class Tower extends GameObject{
 	
     public String test;
     protected int reloadTime;
-    private boolean canFire;
+    private boolean canFire = true;
     private int reloadCounter;
     protected Missile missile;
     protected String missileImageName;
