@@ -63,14 +63,15 @@ public class TowerB extends Tower{
 	public void updateMissilePower() {
 		int power = missile.getMissilePower();
 		if(power <= TowerB.MaxMissilePower) {
-			power += 30;
+			missile.setMissilePower(power+100);
+			System.out.println("test");
 		}
 	}
 	
 	public void updateMissileSpeed() {
 		int speed = missile.getMissileSpeed();
 		if( speed <= TowerB.MaxMissileSpeed) {
-			speed += 1;
+			missile.setMissileSpeed(speed+1);
 		}
 	}
 	
