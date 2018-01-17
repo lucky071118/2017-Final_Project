@@ -1,9 +1,12 @@
 
 public abstract class Enemy extends GameObject{
 	
+	//the blood of enemy
 	private int blood;
+	
+	//the speed of enemy move
 	private int speed;
-
+	
     public Enemy(int x, int y, int blood, int speed){
         super(x, y);
         this.blood = blood;
@@ -20,11 +23,12 @@ public abstract class Enemy extends GameObject{
     }
     
     
-    
+    //enemy will move when the animationTimer invoke the paint of JPanel
     public void move() {
         x += speed;
     }
     
+    //enemy will loss the blood when missile touch the enemy
     public void bloodLoss(int missilePower) {
     	blood -= missilePower;
     	
@@ -32,6 +36,7 @@ public abstract class Enemy extends GameObject{
     		isVisible = false;
     	}
     }
+    
     
     public void setVisible() {
     	isVisible = false;

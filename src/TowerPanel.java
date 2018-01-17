@@ -9,13 +9,20 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class TowerPanel extends JPanel {
+	/*
+	 * The class is JPanel that contain the buttons of towers
+	 * 
+	 */
 	
+	
+	//a list of buttons of Towers
 	private TowerButton[] buttonList = new TowerButton[7];
 	
 	
 	public TowerPanel(Tower[] towers) {
 		drawTowerButton(towers);
 	}
+	
 	
 	public void setActionListener(ActionListener buttonListener) {
 		for(JButton button : buttonList ) {
@@ -29,6 +36,7 @@ public class TowerPanel extends JPanel {
 		
 	}
 	
+	//create buttons of the towers
 	private void drawTowerButton(Tower[] towers) {
 		for(int i=0; i< buttonList.length; i++) {
 			if(buttonList[i] == null) {
@@ -41,6 +49,7 @@ public class TowerPanel extends JPanel {
 	}
 	
 	
+	//update the button of the tower when player change the type of the tower
 	public void update(int number, Tower[] towers) {
 		removeAll();
 		revalidate();
@@ -49,6 +58,7 @@ public class TowerPanel extends JPanel {
 		drawTowerButton(towers);
 		repaint();
 	}
+	
 	
 	public void removeAllActionListener(ActionListener buttonListener) {
 		for(JButton button : buttonList ) {

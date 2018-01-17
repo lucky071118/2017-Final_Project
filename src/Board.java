@@ -18,20 +18,27 @@ import javax.swing.JPanel;
 public class Board extends JPanel{
    
     
+	//missiles in the game board
     private ArrayList<Missile> missiles;
+    
+    //enemies in the game board
     private ArrayList<Enemy> enemies;
     
+    //the width of game board 
     private final int boardWidth;
+    
+    //the height of game board
 	private final int boardHeight;
     
     
+	//initial state for update paint 
     private StateInterface state = new GameStartState();
+    
+    //the blood of the player
     private int playerBlood;
  
-
-    private final int[][] enemyPositions = {
-        {0, 0}
-    };
+    
+   
     
     
    
@@ -44,6 +51,7 @@ public class Board extends JPanel{
         
     }
     
+   
     private void initBoard(){
         
        
@@ -57,7 +65,7 @@ public class Board extends JPanel{
        
     }
     
-    
+    //When starting the new round, the method will be invoked
     public void newRound(EnemyFactory factory) {
     	
     	missiles.clear();
@@ -68,7 +76,7 @@ public class Board extends JPanel{
    
     
     
-    
+    //controller invoke the method to update the JPanel
     public void paint(StateInterface state) {
     	this.state = state;
     	repaint();
@@ -77,7 +85,7 @@ public class Board extends JPanel{
     
     
 
-    
+    //paint the JPanel with the new information about enemy and missile
     @Override
     public void paintComponent(Graphics g){
     	
@@ -88,7 +96,7 @@ public class Board extends JPanel{
     
    
     
-   
+   //update all information about enemy and missile
     public void update() {
     	
     	
@@ -102,7 +110,7 @@ public class Board extends JPanel{
     
   
   
-    
+    //move the enemy position or clear from the arraylist
     private void updateMissiles(){
     	
     		
@@ -117,6 +125,7 @@ public class Board extends JPanel{
     	  
     }
     
+    //move the enemy position or clear from arraylist
     private void updateEnemies(){
         if(enemies.isEmpty()){
             
@@ -135,6 +144,7 @@ public class Board extends JPanel{
         
     }
     
+    //check whether the missile check the enemy
     private void checkCollisions(){
         
     	
@@ -156,6 +166,7 @@ public class Board extends JPanel{
         
     }
     
+    //check whether the enemy touch the tower
     private void checkBoundary() {
     	Rectangle r1 = new Rectangle(boardWidth, 0, 100, boardHeight);
     	for (Enemy enemy : enemies) {
@@ -186,12 +197,12 @@ public class Board extends JPanel{
     }
     
     
-    //Set player blood
+   
     public void setPlayerBlood(int playerBlood) {
     	this.playerBlood = playerBlood;
     }
     
-    //Get player blood
+   
     public int getPlayerBlood() {
     	return playerBlood;
     }
@@ -206,7 +217,7 @@ public class Board extends JPanel{
     }
     
     
-    
+    //check whether the round is over
     public boolean checkRound() {
     	boolean result = true;
     	if(enemies.isEmpty()){
@@ -215,6 +226,7 @@ public class Board extends JPanel{
     	return result;
     }
     
+    //check whether the game is over
     public boolean checkGame() {
     	boolean result = false;
     	if(playerBlood == 0){

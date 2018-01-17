@@ -7,6 +7,6 @@ public class EnemyC extends Enemy{
 	
 	
 	protected String getImageName() {
-		return "bin\\EnemyC.png";
+		return "src\\image\\EnemyC.png";
 	}
 }

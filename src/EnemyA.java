@@ -8,7 +8,7 @@ public class EnemyA extends Enemy{
 	
 	
 	protected String getImageName() {
-		return "bin\\EnemyA.png";
+		return "src\\image\\EnemyA.png";
 	}
 	
 }

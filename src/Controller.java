@@ -7,20 +7,35 @@ import java.util.ArrayList;
 import javax.swing.JDialog;
 
 public class Controller {
+	
+	//A timer for tower shooting the missile
 	private TowerTimer towerTimer;
+	
+	//A timer for update the paint of JPanel
 	private AnimationTimer animationTimer;
 	
+	//use the state pattern to change the way of updating the paint of JPanel
 	private StateInterface state;
 	
+	//Model contain Tower information
 	private Model model;
+	
+	//Board contain the JPanel and information about missile and enemy
 	private Board board;
+	
+	//towerPanel contain the JPanel about Tower
 	private TowerPanel towerPanel;
 	
+	//a dialog for update the ability of a tower
 	private JDialog dialog;
+	
+	//the 
 	private int number;
+	
+	//the round number of game 
 	private int round = 1;
 	
-	
+	 
 	public Controller(Model model,Board board, TowerPanel towerPanel) {
 		this.model = model;
 		this.board = board;
@@ -49,7 +64,7 @@ public class Controller {
 	
 	
 	
-	
+	//a ActionListener for dialog when player update the ability of a tower
 	private  ActionListener updateButtonListener = new  ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -111,7 +126,7 @@ public class Controller {
 		}
 	};
 	
-	
+	// a ActionListener  when user click the the button of tower
 	private ActionListener towerButtonListener = new ActionListener() {
 
 		@Override
@@ -138,7 +153,7 @@ public class Controller {
 	
 	
 	
-	
+	// a ActionListener for animationTimer to update the paint of JPanel
 	private ActionListener animationListener = new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -165,6 +180,7 @@ public class Controller {
 		}
 	};
 	
+	// a MouseListener when the paint is "start game" and it will change state of "start game " to the state of "update towers"
 	private MouseListener startGmaeListener = new MouseListener() {
 		public void mouseClicked(MouseEvent e) {
 	       
@@ -192,7 +208,7 @@ public class Controller {
 	    }
 	};
 	
-	
+	// a MouseListener when the paint is "update towers" and it will change state of "update towers" to the state of "In Game" 
 	private MouseListener nextRoundListener = new MouseListener() {
 		public void mouseClicked(MouseEvent e) {
 			

@@ -1,6 +1,10 @@
 import java.util.ArrayList;
 
 public class ThreeWayShoot implements ShootStrategy{
+	
+	//the way of shoot is shoot three missiles and the missile is shotgun
+	//The Tower can change the strategy of shooting to the ThreeWayShoot
+	
 	public ArrayList<Missile> shoot(Missile missile){
 		ArrayList<Missile> missiles = new ArrayList<Missile>();
 		

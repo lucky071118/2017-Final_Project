@@ -5,6 +5,7 @@ import java.util.Random;
 
 public class EnemyRound2 implements EnemyFactory{
 	
+	//The class will create the enemies for round 1
 	 private int enemyANumber = 20;
 	 private int enemyBNumber = 10;
 	

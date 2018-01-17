@@ -10,9 +10,8 @@ import javax.swing.JButton;
 
 public class UpdateTowerState implements StateInterface{
 	
-
 	
-	
+	//update the paint of board JPanel when the state is "updateTower"
 	public void paint(Graphics g, Board board) {
 		String msg = "Start Round";
         Font small = new Font("Helvetica", Font.BOLD, 50);
