@@ -1,23 +1,45 @@
-1.Data faults
-(1)
-(2)
+1.defect about programming language
+(1)是否所有的Class type的變數,在被使用前都有先初始化?
+(2)所有Class的Constructor的parameters是否正確
+(3)所有method的parameters是否正確
+(4)image/file的讀取是否有exception
+(5)是否有不適當的Casting
+(6)迴圈是否有terminate
+(7)在進行除法運算前，是否有檢查除數為0的情況
+(8)是否所有Array或Arraylist都沒有upper bound的問題
+(9)對於condition statement的判斷，是否都正確
+(10)是否所有的switch都考量了所有可能性，且都有define a default action
+(11)Exception的Multiple Catch Blocks是否排序正確
+(12)是否去實作interface或SuperClass中的abstract method
+(13)Classpath和package的設置是否正確，以確保能找到正確的Class
+(14)formal和actual的parameter types是否完全match
+(15)如果String被更改，則所有的連結是否有重新assign
+(16)Static method是否只使用到Static field 
+(17)Class的常數是否有加final，且是否有被初始化
 
-2.Control faults
-(1)
-(2)
 
-3.Input/output faults
-(1)
-(2)
+2.defect about software domain
+(1)swing.Timer是否有在正確的時間啟動或停止
+(2)是否所有靜置不動的UI Components有正確的設定，包含面積大小、位置和是否Visible
+(3)是否所有隨動畫更新的UI Components都有正確的設定，包含移動和碰撞處理
+(4)是否有針對螢幕解析度來控制遊戲畫面大小
+(5)是否所有UI Components都有加入正確的ActionListener或者是mouseListener
+(6)是否所有ActionListener或者是mouseListener都有正確的與使用者互動
 
-4.Interface faults
-(1)
-(2)
 
-5.Storage management faults
-(1)
-(2)
-
-6.Exception management faults
-(1)
-(2)
+3.code smells that usually corresponds to a deeper problem in the system
+第三種類主要都是code smells，Code smells雖然對目前的整體系統部會造成太大的問題或defect，
+但他們通常很容易在後續的未來，產生非常嚴重的問題或defect
+所以如果時間較充足，則可以進行check，以節省未來更大的Cost
+反之，如果時程較趕，則可以不用進行check
+(1)是否有缺少註解
+(2)所有的Class、method和field都有適當的名稱
+(3)是否沒有任何magic number存在
+(4)是否有method或class過於龐大
+(5)是否有field或method擁有不恰當的Access Midofiers
+(6)是否所有override的methods都有寫@Override
+(7)是否有Shotgun Surgery
+(8)是否有Data Clumps
+(9)是否有Primitive Obsession
+(10)是否有unneeded or unreachable code
+(11)是否有Message Chain
