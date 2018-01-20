@@ -1,0 +1,23 @@
+1.Data faults
+(1)
+(2)
+
+2.Control faults
+(1)
+(2)
+
+3.Input/output faults
+(1)
+(2)
+
+4.Interface faults
+(1)
+(2)
+
+5.Storage management faults
+(1)
+(2)
+
+6.Exception management faults
+(1)
+(2)
