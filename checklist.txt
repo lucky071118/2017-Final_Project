@@ -43,3 +43,4 @@
 (9)是否有Primitive Obsession
 (10)是否有unneeded or unreachable code
 (11)是否有Message Chain
+45645646
