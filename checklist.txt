@@ -16,7 +16,8 @@
 (15)如果String被更改，則所有的連結是否有重新assign
 (16)Static method是否只使用到Static field 
 (17)Class的常數是否有加final，且是否有被初始化
-
+(18)在進行浮點數的比較和計算時，是否有精準度誤差
+(19)在進行物件的Copy時，是否有注意淺層複製所帶來的影響
 
 2.defect about software domain
 (1)swing.Timer是否有在正確的時間啟動或停止
