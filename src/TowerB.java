@@ -13,7 +13,7 @@ public class TowerB extends Tower{
 			};
 	
 	public TowerB(int x, int y) {
-		super(x, y, 12, new Missile(x, y+28, 2, 100, "bin\\MissileB.png"), new OneWayShoot(), "bin\\TowerB.png");
+		super(x, y, 12, new Missile(x, y+28, 2, 100, "src\\image\\MissileB.png"), new OneWayShoot(), "src\\image\\TowerB.png");
 	}
 	
 	
