@@ -61,7 +61,11 @@ Extension of checklist edited by 顏慷
 ### Storage mangements faults
 - 假如空間不在被使用，是否被 de-llocated
 
-
+Extension of checklist edited by 佑昇
+- 是否有non-local的資料可以放進local
+- 宣告變數時，是否需要宣告帶有正負號
+- image/file是否有關閉
+- 條件判斷式是否有例外狀況的處理
 
 
 
