@@ -63,7 +63,7 @@ Extension of checklist edited by 顏慷
 
 Extension of checklist edited by 佑昇
 - 是否有non-local的資料可以放進local
-- 宣告變數時，是否需要宣告帶有正負號
+- 每個class是否有恰當的constructor和distructor
 - image/file是否有關閉
 - 條件判斷式是否有例外狀況的處理
 
