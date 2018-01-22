@@ -58,7 +58,7 @@ Extension of checklist edited by 顏慷
 ### Interface faults
 - function 跟 method的 parameter的數目是否一致
 
-### Storage mangements faults
+### Storage managements faults
 - 假如空間不在被使用，是否被 de-llocated
 
 Extension of checklist edited by 佑昇
