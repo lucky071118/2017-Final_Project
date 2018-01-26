@@ -37,7 +37,7 @@
 (2)所有的Class、method和field都有適當的名稱
 (3)是否沒有任何magic number存在
 (4)是否有method或class過於龐大
-(5)是否有field或method擁有不恰當的Access Midofiers
+(5)是否有field或method擁有不恰當的Access modifiers
 (6)是否所有override的methods都有寫@Override
 (7)是否有Shotgun Surgery
 (8)是否有Data Clumps
