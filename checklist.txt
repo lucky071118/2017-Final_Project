@@ -14,7 +14,7 @@
 (13)Classpath和package的設置是否正確，以確保能找到正確的Class
 (14)formal和actual的parameter types是否完全match
 (15)如果String被更改，則所有的連結是否有重新assign
-(16)Static method是否只使用到Static field 
+(16)Static method是否只使用到Static field或method
 (17)Class的常數是否有加final，且是否有被初始化
 (18)在進行浮點數的比較和計算時，是否有精準度誤差
 (19)在進行物件的Copy時，是否有注意淺層複製所帶來的影響
@@ -55,13 +55,17 @@ Extension of checklist edited by 顏慷
 ### Input/Output faults
 - 所有的input variables都有被使用嗎？
 
-### Interface faluts
+### Interface faults
 - function 跟 method的 parameter的數目是否一致
 
-### Storage mangements faults
+### Storage managements faults
 - 假如空間不在被使用，是否被 de-llocated
 
-
+Extension of checklist edited by 佑昇
+- 是否有non-local的資料可以放進local
+- 每個class是否有恰當的constructor和distructor
+- image/file是否有關閉
+- 條件判斷式是否有例外狀況的處理
 
 
 
